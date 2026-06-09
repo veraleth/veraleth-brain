@@ -36,3 +36,20 @@ Formato: DEC-XXX · Fecha · Título · Contexto · Decisión · Consecuencias
 - veraleth-db contiene schemas y migraciones (SQLx migrate)
 - No se levanta instancia propia de PostgreSQL en Hetzner por ahora
 - Si el proyecto escala, se puede migrar a instancia propia sin cambiar el código (mismo driver)
+
+## DEC-006 · 2026-06-09 · Auth de usuarios — Supabase Auth
+**Contexto:** Veraleth necesita cuentas de usuario para feedback ciudadano y reportes. Se evaluaron JWT propio, Supabase Auth y Clerk.
+**Decisión:** Usar **Supabase Auth** como sistema de autenticación. El backend Axum valida el JWT emitido por Supabase en cada request sin llamar a Supabase en cada operación.
+**Consecuencias:**
+- Supabase maneja: registro, email verificado, reset de contraseña, refresh tokens
+- veraleth-api valida JWT de Supabase en middleware Axum — sin lógica de auth propia
+- Costo cero en MVP — migrable si el proyecto escala
+- Supabase Auth y Supabase DB corren bajo el mismo proyecto Supabase
+
+## DEC-007 · 2026-06-09 · Primera fuente de scraping — Wong (wong.pe)
+**Contexto:** Se necesitaba elegir el primer supermercado peruano para el MVP del scraper de precios.
+**Decisión:** Arrancar con **wong.pe** (Cencosud). DOM estable basado en React, categorías bien estructuradas.
+**Consecuencias:**
+- veraleth-scraper implementa primero el spider de Wong
+- Por ser Cencosud, el mismo spider es adaptable a metro.pe con cambios mínimos — dos fuentes al precio de una
+- Tottus y Plaza Vea quedan como Fase 2 del scraper

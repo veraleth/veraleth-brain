@@ -6,13 +6,13 @@
 **Responsable:** Rodhan
 
 ## ¿Qué está en curso?
-- Stack backend definido: Rust + Axum + SQLx
-- Base de datos definida: PostgreSQL vía Supabase
+- Stack completamente definido: Rust + Axum + SQLx + Supabase + Supabase Auth
+- Scraping MVP: wong.pe como primera fuente
 
 ## Próximo paso
-- Debatir con Perplexity DEC-006: Auth de usuarios (JWT propio vs Supabase Auth)
-- Debatir con Perplexity DEC-007: fuente de scraping inicial (un supermercado peruano para MVP)
-- Con DEC-006 resuelto: Claude Code inicializa estructura base de veraleth-api
+- Claude Code inicializa estructura base de veraleth-api (Rust + Axum)
+- Claude Code inicializa estructura base de veraleth-scraper (Python + Scrapy, spider Wong)
+- Claude Code inicializa veraleth-db con schema base (productos, precios, usuarios)
 
 ## Alertas para Perplexity
 _(vacío — sin alertas activas)_
