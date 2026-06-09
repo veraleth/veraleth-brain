@@ -42,3 +42,23 @@ Registro cronológico de sesiones de trabajo.
 - Implementar spider Wong real (selectores DOM de wong.pe)
 - Conectar veraleth-api a Supabase (DATABASE_URL real)
 - Desplegar veraleth-web en Vercel
+
+---
+
+## SESSION-003 · 2026-06-09
+**Participantes:** Rodhan + Perplexity
+**Tema:** Deploy veraleth-web + documentación de bloqueo Supabase + estandarización pnpm
+
+**Acordado:**
+- Supabase queda como pendiente manual de Rodhan (DEC-008)
+- pnpm es el gestor de paquetes obligatorio en todos los repos JS/TS (DEC-009)
+- veraleth-web se despliega en Vercel como página pública placeholder
+- El spider Wong y la conexión real de la API quedan bloqueados hasta Supabase
+
+**Ejecutado por Claude Code:**
+- veraleth-web migrado a pnpm y desplegado en Vercel
+- DEC-008 y DEC-009 registrados en DECISIONS.md
+- STATUS.md actualizado con bloqueo explícito y alerta para Perplexity
+
+**Próxima sesión:**
+- Rodhan confirma Supabase listo → aplicar migraciones → spider Wong → GET /products

@@ -5,23 +5,29 @@
 **Fecha de última actualización:** 2026-06-09
 **Responsable:** Rodhan
 
-## Repos inicializados
+## Repos
 | Repo | Estado |
 |------|--------|
 | veraleth-brain | ✅ Activo — fuente de verdad |
 | veraleth-api | ✅ Estructura base (Rust + Axum, /health) |
 | veraleth-db | ✅ Schema base (products, price_history, reports) |
 | veraleth-scraper | ✅ Estructura base (WongSpider placeholder) |
-| veraleth-web | ✅ Estructura base (Next.js + Tailwind, placeholder) |
+| veraleth-web | ✅ Desplegado en Vercel — página placeholder pública |
 
 ## ¿Qué está en curso?
-- Todos los repos de código inicializados
-- Pendiente conectar a Supabase real y desplegar
+- veraleth-web público en Vercel
+- Supabase pendiente de configuración manual por Rodhan
 
-## Próximo paso
-1. Implementar spider Wong real — selectores DOM de wong.pe
-2. Conectar veraleth-api a Supabase (configurar DATABASE_URL + primera query)
-3. Desplegar veraleth-web en Vercel como página pública placeholder
+## Bloqueado hasta que Rodhan configure Supabase
+- Aplicar migraciones (sqlx migrate run)
+- Conectar veraleth-api a PostgreSQL real
+- Implementar spider Wong con inserción real a DB
+
+## Próximo paso (cuando Supabase esté listo)
+1. Agregar DATABASE_URL y SUPABASE_JWT_SECRET a Infisical
+2. Ejecutar migraciones desde veraleth-db
+3. Implementar spider Wong real (selectores DOM wong.pe)
+4. Primer endpoint real en veraleth-api: GET /products
 
 ## Alertas para Perplexity
-_(vacío — sin alertas activas)_
+⚠️ Supabase no configurado — preguntar a Rodhan si ya creó el proyecto antes de continuar con tareas de DB o scraping.

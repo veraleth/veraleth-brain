@@ -53,3 +53,20 @@ Formato: DEC-XXX · Fecha · Título · Contexto · Decisión · Consecuencias
 - veraleth-scraper implementa primero el spider de Wong
 - Por ser Cencosud, el mismo spider es adaptable a metro.pe con cambios mínimos — dos fuentes al precio de una
 - Tottus y Plaza Vea quedan como Fase 2 del scraper
+
+## DEC-008 · 2026-06-09 · Supabase pendiente de configuración
+**Contexto:** Se necesita un proyecto Supabase real para conectar veraleth-api y correr migraciones.
+**Decisión:** Postergado — Rodhan creará el proyecto en supabase.com manualmente. Una vez disponible: agregar DATABASE_URL y SUPABASE_JWT_SECRET a Infisical y ejecutar sqlx migrate run.
+**Consecuencias:**
+- Spider Wong y conexión real de veraleth-api quedan bloqueados hasta tener Supabase activo
+- veraleth-web puede desplegarse en Vercel de forma independiente (no depende de Supabase)
+- Próxima sesión técnica arranca con: "Supabase listo → aplicar migraciones → spider Wong"
+
+## DEC-009 · 2026-06-09 · Gestor de paquetes JS — pnpm obligatorio
+**Contexto:** Se necesita estandarizar el gestor de paquetes para todos los proyectos JS/TS del ecosistema Veraleth.
+**Decisión:** Usar **pnpm** exclusivamente. npm queda prohibido en todos los repos.
+**Consecuencias:**
+- Todos los repos JS/TS usan pnpm install, pnpm add, pnpm run
+- veraleth-web debe tener pnpm-lock.yaml — si existe package-lock.json, eliminarlo
+- Vercel CLI se instala con pnpm add -g vercel
+- Claude Code nunca usa npm en ningún prompt de Veraleth
