@@ -19,3 +19,20 @@ Formato: DEC-XXX · Fecha · Título · Contexto · Decisión · Consecuencias
 **Contexto:** El proyecto usa dos IAs con roles distintos.
 **Decisión:** Perplexity debate y genera prompts. Claude Code documenta y construye. El repo es el registro de todo lo acordado.
 **Consecuencias:** Claude Code nunca decide — solo ejecuta prompts generados por Perplexity + Rodhan.
+
+## DEC-004 · 2026-06-09 · Backend — Rust + Axum
+**Contexto:** Se necesitaba elegir el stack del backend de veraleth-api. Se priorizó robustez, rendimiento y control sobre velocidad de desarrollo inicial.
+**Decisión:** Backend en **Rust + Axum** con **SQLx** como driver de base de datos (async, compile-time checked) y runtime **Tokio**.
+**Consecuencias:**
+- veraleth-api será un proyecto Rust con Axum
+- SQLx maneja queries a PostgreSQL (Supabase por debajo)
+- El scraper (veraleth-scraper) se mantiene en Python + Scrapy — son sistemas independientes
+- Mayor curva inicial pero binario único, memoria mínima y errores detectados en compilación
+
+## DEC-005 · 2026-06-09 · Base de datos — PostgreSQL vía Supabase
+**Contexto:** Se necesitaba decidir dónde correr PostgreSQL para el MVP.
+**Decisión:** Usar **Supabase** como PostgreSQL managed para el MVP. Supabase Auth queda disponible pero la decisión de usarlo se toma en DEC-006.
+**Consecuencias:**
+- veraleth-db contiene schemas y migraciones (SQLx migrate)
+- No se levanta instancia propia de PostgreSQL en Hetzner por ahora
+- Si el proyecto escala, se puede migrar a instancia propia sin cambiar el código (mismo driver)

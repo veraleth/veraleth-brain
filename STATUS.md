@@ -6,11 +6,13 @@
 **Responsable:** Rodhan
 
 ## ¿Qué está en curso?
-- Inicialización del repo veraleth-brain
-- Definición de arquitectura base y stack
+- Stack backend definido: Rust + Axum + SQLx
+- Base de datos definida: PostgreSQL vía Supabase
 
 ## Próximo paso
-- Debatir con Perplexity: elección de backend (Node.js vs FastAPI) y estructura de scraping
+- Debatir con Perplexity DEC-006: Auth de usuarios (JWT propio vs Supabase Auth)
+- Debatir con Perplexity DEC-007: fuente de scraping inicial (un supermercado peruano para MVP)
+- Con DEC-006 resuelto: Claude Code inicializa estructura base de veraleth-api
 
 ## Alertas para Perplexity
 _(vacío — sin alertas activas)_
