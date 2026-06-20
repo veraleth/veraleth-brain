@@ -31,7 +31,7 @@ Formato: DEC-XXX · Fecha · Título · Contexto · Decisión · Consecuencias
 
 ## DEC-005 · 2026-06-09 · Base de datos — PostgreSQL vía Supabase
 **Contexto:** Se necesitaba decidir dónde correr PostgreSQL para el MVP.
-**Decisión:** Usar **Supabase** como PostgreSQL managed para el MVP. Supabase Auth queda disponible pero la decisión de usarlo se toma en DEC-006.
+**Decisión:** Usar **Supabase** como PostgreSQL managed para el MVP. Supabase Auth queda disponible pero la decisión de usarlo se toma en [DEC-006](DECISIONS.md#dec-006).
 **Consecuencias:**
 - veraleth-db contiene schemas y migraciones (SQLx migrate)
 - No se levanta instancia propia de PostgreSQL en Hetzner por ahora
@@ -70,3 +70,11 @@ Formato: DEC-XXX · Fecha · Título · Contexto · Decisión · Consecuencias
 - veraleth-web debe tener pnpm-lock.yaml — si existe package-lock.json, eliminarlo
 - Vercel CLI se instala con pnpm add -g vercel
 - Claude Code nunca usa npm en ningún prompt de Veraleth
+
+## DEC-010 · 2026-06-20 · Referencias cruzadas navegables en documentación
+**Contexto:** Las referencias entre documentos del repo aparecían como texto plano o negritas no clickeables, lo que impedía navegación directa en GitHub y resolución automática por Perplexity vía MCP.
+**Decisión:** Toda referencia a otra decisión o documento dentro de veraleth-brain debe usar el patrón `[DEC-XXX](DECISIONS.md#dec-xxx)` con ancla GitHub. Referencias sin ancla solo se permiten cuando la ancla es incierta.
+**Consecuencias:**
+- Claude Code audita referencias sueltas en cada sesión antes de agregar contenido nuevo
+- Perplexity puede resolver referencias automáticamente al leer el repo vía MCP
+- Script de validación pendiente: `validate-refs.sh` que detecte referencias sueltas antes del commit (Fase 2)

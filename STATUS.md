@@ -30,4 +30,4 @@
 4. Primer endpoint real en veraleth-api: GET /products
 
 ## Alertas para Perplexity
-⚠️ Supabase no configurado — preguntar a Rodhan si ya creó el proyecto antes de continuar con tareas de DB o scraping.
+⚠️ Supabase no configurado — preguntar a Rodhan si ya creó el proyecto antes de continuar con tareas de DB o scraping. Ver [DEC-008](DECISIONS.md#dec-008).

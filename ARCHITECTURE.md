@@ -1,7 +1,7 @@
 # ARCHITECTURE — Veraleth
 
 > Este documento describe el stack y la arquitectura del sistema.
-> Sujeto a cambios — ver DECISIONS.md para el historial de decisiones vigentes.
+> Sujeto a cambios — ver [DECISIONS.md](DECISIONS.md) para el historial de decisiones vigentes.
 
 ## Stack (inicial)
 
@@ -24,4 +24,4 @@
 - **Comunidad:** cuentas de usuarios verificados, feedback ciudadano, sistema de reportes
 
 ## Decisiones pendientes
-- DEC-004 (pendiente): elección de backend — Node.js vs Python FastAPI
+- [DEC-004](DECISIONS.md#dec-004) (pendiente): elección de backend — Node.js vs Python FastAPI
