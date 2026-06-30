@@ -42,7 +42,27 @@ Plataforma de monitoreo de seguridad alimentaria y medicamentos en Perú. Combin
 - Alertas vía Telegram (opcional, suscripción a productos específicos)
 - Comunidad con cuentas verificadas (email) para reportes
 
-> ⚠️ Pendiente — completar con Rodhan: modelo de monetización (ads, premium, donaciones), fuentes de datos iniciales prioritarias, zonas geográficas (Lima first o nacional)
+**Modelo de negocio:**
+
+> 📝 Provisional — afinar con Rodhan en sesión dedicada
+
+**Monetización (fase MVP: gratis 100%):**
+- Fase inicial: completamente gratis (scraping automático + alertas Telegram)
+- Opciones futuras (post-validación):
+  - Premium: alertas ilimitadas + historial precios extendido (1 año vs 3 meses free)
+  - Donaciones: modelo "café" para mantener servidores (S/ 5-10/mes voluntario)
+  - Ads mínimas: solo si escala >10k usuarios/mes, sin afectar UX
+
+**Fuentes de datos iniciales prioritarias:**
+1. **DIGEMID** — alertas medicamentos (lotes retirados, concentración incorrecta) — scraping semanal
+2. **Wong/Plaza Vea** — precios productos + ingredientes (scraping diario)
+3. **INDECOPI** — denuncias productos defectuosos — scraping quincenal
+4. **Fase 2:** Metro, Tottus, Makro (tras validar scrapers Wong/Plaza Vea)
+
+**Zonas geográficas:**
+- Fase piloto: Lima Metropolitana (fuentes web scrapers accesibles nacionalmente, pero comunidad inicial Lima)
+- Expansión: nacional (Perú completo) — fuentes oficiales (DIGEMID, INDECOPI) son nacionales por defecto
+- Criterio: validar engagement Lima antes de marketing nacional
 
 ## Arquitectura de producto
 
@@ -77,7 +97,26 @@ Usuario reporta incidencia (cuenta verificada)
 Alerta Telegram a suscriptores de ese producto
 ```
 
-> ⚠️ Pendiente — completar con Rodhan: frecuencia de scraping, threshold para alertas de precio, moderación de reportes ciudadanos
+**Parámetros operacionales:**
+
+> 📝 Provisional — afinar con Rodhan en sesión dedicada
+
+**Frecuencia de scraping:**
+- **DIGEMID** (alertas medicamentos): 1x semana (miércoles 2am)
+- **Wong/Plaza Vea** (precios): 1x día (4am, evita picos tráfico)
+- **INDECOPI** (denuncias): 1x cada 15 días (fuente actualiza lento)
+- Rate limiting: 1 req/segundo por dominio (evitar bloqueo IP)
+
+**Threshold para alertas de precio:**
+- Alza >15% en <7 días → alerta automática Telegram
+- Alza >25% en <24h → alerta crítica (posible desabastecimiento)
+- Baja >20% → alerta "oportunidad" (opcional, usuario configura)
+
+**Moderación de reportes ciudadanos:**
+- Auto-aprobado: usuario con email verificado + <3 reportes flagged
+- Revisión manual: reporte flagged por 2+ usuarios → cola moderación
+- Ban automático: usuario con 5+ reportes rechazados en 30 días
+- Verificación extra: reportes que contradigan fuente oficial (DIGEMID/INDECOPI) requieren evidencia fotográfica
 
 ## Principios que Claude Code debe respetar
 
